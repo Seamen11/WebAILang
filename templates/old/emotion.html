@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализ эмоций</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Перейти на главную страницу</a>
+    <h1>Анализ эмоций</h1>
+    <<form action="/analyze_emotion" method="post">
+        <select name="audio_file">
+            {% for file in files %}
+                <option value="{{ file }}">{{ file }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Анализировать эмоции</button>
+    </form>
+
+    {% if emotion %}
+        <h2>Результат анализа эмоций:</h2>
+        <p>{{ emotion }}</p>
+    {% endif %}
+</body>
+</html>
